@@ -130,3 +130,102 @@ my_list = [1, 2, 3, 4, 5, 6, 1, 1, 3, 3, 8, 9, 10, 11, 13]
 
 result = [i for i in my_list if i not in remove_list]
 print(result)
+
+###############################
+# 3. 문자열, 튜플, 사전, 집합 자료형
+###############################
+#### 1. 문자열 ####
+# " 나 ' 를 문자열 내 포함할 수 있다.
+# "를 포함하고 싶으면 ''안에 문자열을 넣고 그 반대도 가능하다.
+# 만약 상관없이 하고싶다면 \ 문자를 사용한다.
+myString = "hello\"Dohyun\'"
+print(myString)
+
+# 문자열에 정수를 곱하면 동일문자열을 해당 정수만큼 이어붙인것이 된다.
+myString = "abc"
+print(myString * 3)
+
+# 문자열끼리 + 연산은 문자열을 합쳐준다.
+myString = "abc" + " Def"
+print(myString)
+
+#### 2. 튜플 #####
+# 리스트는 [] 로 원소들을 담았다.
+# 튜플은 () 로 원소들을 담는다.
+# 튜플로 한 번 선언된 값은 변할 수 없다.
+
+# (중요 Tip!)
+# 튜플은 주로 바뀌지 않는 값들을 다룰 때 사용되는데, 우선순위 큐를 이용한 최단거리 구하기(다익스트라 알고리즘)에서
+# (비용, 노드) 같이 서로다른 성격의 데이터를 묶어 저장할 때 사용한다.
+
+myTuple = (1, 2, 3)
+print(myTuple)
+# myTuple[2] = 1 -> TypeError: 'tuple' object does not support item assignment
+
+#### 3. 사전 ####
+# key - value 쌍에 대한 데이터를 다루는 자료형이다.
+# 리스트, 튜플은 원소의 순서가 있는, 즉 순번으로 인덱싱이 가능한 자료형이나, 사전은 그렇지 않다.
+# 사전은 키에 대한 밸류를 해시테이블을 이용해 저장하는 자료형이기 때문에, 인덱스로 원소의 순번이 아닌 key를 사용한다.
+# 검색과 수정이 O(1) 시간복잡도로 이뤄진다.
+
+data = dict()
+# list는 list()
+data["myAge"] = 30
+data["myHeight"] = 187
+print(data)
+
+# 사전 자료형은 메모리공간의 낭비를 막을 수 있다.
+# 가령 1000만개의 데이터 중 100개가 체크되어야 한다고 했을 때, 리스트는 1000만개의 원소를 갖고 그 중 100개만 체크를 하여야 하지만,
+# 사전 자료형은 100개만 키-밸류 데이터를 갖고있으면 되어 메모리상 이점이 있다. 실제로 코테에서도 잘 쓰이는 자료형이다.
+
+# (중요 Tip!)
+# list, tuple, dict 에서는 'in'키워드를 사용할 수 있다.
+if 'myAge' in data:
+    print("\'myAge\'를 키로 갖는 밸류가 존재합니다.")
+
+# 또한 key, value에 대해 리스트로 뽑을 수 도 있다.
+data_keys = data.keys()
+data_values = data.values()
+
+print(data_keys)
+print(data_values)
+
+for key in data_keys:
+    print(key, " : ", data[key])
+
+#### 4. 집합 ####
+# 집합은 중복을 허용하지 않으며, 순서가 없다.
+# 사전 자료형에서 키-밸류에 대한 데이터의 인덱스가 없듯 집합은 밸류의 값만 존재하는 자료형이다.
+# 특정 원소가 존재하는지 확인할 때 사전자료형처럼 O(1)이 소요된다.
+
+mySet = set()
+mySet = set([1, 2, 3])
+# mySet = {1, 2, 3}
+
+# mySet.add(1) -> 원소 추가
+print(mySet)
+
+# 합집합
+setA = set([1, 2, 3])
+setB = set([2, 3, 4])
+setA_Plus_B = setA | setB # 합집합은 |를 사용한다.
+print(setA_Plus_B)
+
+# 교집합
+setA_And_B = setA & setB # 교집합은 &를 사용한다.
+print(setA_And_B)
+
+# 차집합
+setA_Minus_B = setA - setB
+print(setA_Minus_B)
+
+# (중요 Tip!) - 집합 자료형의 주요 함수
+# add, update, remove
+setA.add(7) # 원소 1개 추가. O(1)
+print(setA)
+
+setA.update([5, 6]) # 여러개 원소 추가
+print(setA)
+
+setA.remove(5) # 원소 1개 제거. O(1)
+print(setA)
