@@ -2,6 +2,7 @@
 # 1. 수 자료형 -> 정수형, 실수형, 연산
 ###############################
 
+import sys
 #### [1] 정수형 ####
 # 정수형
 myint = 30
@@ -229,3 +230,12 @@ print(setA)
 
 setA.remove(5) # 원소 1개 제거. O(1)
 print(setA)
+
+r, c = map(int, sys.stdin.readline().rstrip().split())
+print(r, c)
+# map 초기화.
+myMap = [[0] * c for _ in range(r)]
+for i in range(r):
+    myMap[i] = list(map(int, sys.stdin.readline().rstrip().split()))
+
+print(myMap)
