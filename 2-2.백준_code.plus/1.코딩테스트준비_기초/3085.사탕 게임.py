@@ -17,11 +17,8 @@
 # 출력
 # 첫째 줄에 상근이가 먹을 수 있는 사탕의 최대 개수를 출력한다.
 import sys
-dr = [1, -1, 0, 0]
-dc = [0, 0, 1, -1]
 n = int(input())
 Max = -1
-
 def findMax(Map):
     global n
     maxlen = 1
@@ -53,7 +50,7 @@ def findMax(Map):
 #         curRow.append(row[j])
 #     Map.append(curRow)
 
-Map = [list(input()) for _ in range(n)]
+Map = [list(input()) for _ in range(n)] # 붙어서 입력받는 문자열들을 각 문자의 리스트로 만들어주는 기법.
 
 for r in range(n):
     for c in range(n):
